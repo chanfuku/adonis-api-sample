@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
+import { userValidator } from '#validators/user_validator'
 
 export default class UsersController {
   async index() {
@@ -22,13 +23,12 @@ export default class UsersController {
   }
 
   async create({ request }: HttpContext) {
-    return await User.create({
-      firstName: request.body().firstName,
-      lastName: request.body().lastName,
-    })
+    const payload = await userValidator.validate(request.all())
+    return await User.create(payload)
   }
 
   async update({ params, request, response }: HttpContext) {
+    const payload = await userValidator.validate(request.all())
     const user = await User.find(params.id)
     if (!user) {
       return response.safeStatus(404).send({
@@ -36,8 +36,8 @@ export default class UsersController {
         message: 'not found',
       })
     }
-    user.firstName = request.body().firstName
-    user.lastName = request.body().lastName
+    user.firstName = payload.firstName
+    user.lastName = payload.lastName
     return await user.save()
   }
 
