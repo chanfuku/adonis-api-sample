@@ -18,3 +18,6 @@ router.get('/', async () => {
 
 router.get('/users', [UsersController, 'index'])
 router.get('/users/:id', [UsersController, 'show'])
+router.post('/users', [UsersController, 'create'])
+router.patch('/users/:id', [UsersController, 'update'])
+router.delete('/users/:id', [UsersController, 'delete'])
