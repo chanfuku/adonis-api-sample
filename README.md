@@ -1,5 +1,4 @@
-
-## set up
+## adonis-api-sample
 
 ### set up
 
