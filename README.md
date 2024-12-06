@@ -16,7 +16,7 @@ docker compose exec app yarn dev
 docker compose exec app node ace migration:run
 ```
 
-### roll back migration
+if you need to rollback migration, run
 
 ```bash
 docker compose exec app node ace migration:rollback
