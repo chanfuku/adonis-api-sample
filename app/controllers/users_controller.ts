@@ -1,16 +1,17 @@
-// import type { HttpContext } from '@adonisjs/core/http'
+import type { HttpContext } from '@adonisjs/core/http'
+import User from '#models/user'
 
 export default class UsersController {
-  index() {
-    return [
-      {
-        id: 1,
-        username: '麻生太郎',
-      },
-      {
-        id: 2,
-        username: '大谷翔平',
-      },
-    ]
+  async index() {
+    return await User.all()
+  }
+
+  async show({ params }: HttpContext) {
+    const user = await User.findOrFail(params.id)
+    return {
+      id: user?.id,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+    }
   }
 }

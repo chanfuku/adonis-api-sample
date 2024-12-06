@@ -16,4 +16,5 @@ router.get('/', async () => {
   }
 })
 
-router.get('users', [UsersController, 'index'])
+router.get('/users', [UsersController, 'index'])
+router.get('/users/:id', [UsersController, 'show'])
