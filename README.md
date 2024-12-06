@@ -4,6 +4,7 @@
 ### set up
 
 ```bash
+cp .env.example .env
 docker compose up -d
 docker compose exec app yarn install
 docker compose exec app yarn dev
