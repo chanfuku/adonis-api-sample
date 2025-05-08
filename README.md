@@ -60,3 +60,10 @@ curl -X PATCH http://localhost:3333/users/3 \
 ```bash
 curl -X DELETE http://localhost:3333/users/3
 ```
+
+## run a sample command
+
+```bash
+docker compose exec app node ace greet
+[ info ] Hello world from "Greet"
+```
